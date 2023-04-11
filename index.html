@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Comet Farms</title>
+    <style>
+      body {
+        background-color: #333;
+        color: white;
+      }
+      
+.table {
+  margin: 50px 0;
+  padding: 20px;
+}
+      
+      td, th {
+        border: 1px solid white;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+      }
+      
+      th {
+        background-color: #222;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #444;
+      }
+      
+      tr:hover {
+        background-color: #666;
+      }
+
+    .div {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	  }
+      
+      #notification {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px;
+        background-color: #222;
+        color: white;
+        z-index: 999;
+        display: none;
+      }
+    </style>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+  var cells = document.querySelectorAll("td"); // All Table
+  
+  for (var i = 0; i < cells.length; i++) {
+    cells[i].addEventListener("click", function() {
+      var text = this.parentNode.querySelector("td:first-child").innerText; // GET_TEXT
+      navigator.clipboard.writeText(text); // COPY_TEXT
+      var notification = document.getElementById("notification");
+      notification.innerText = "Text \"" + text + "\" copied to clipboard!";
+      notification.style.display = "block"; 
+      setTimeout(function() {
+        notification.style.display = "none"; 
+      }, 3000);
+    });
+  }
+});
+</script>
+  </head>
+  <body>
+    <div class="div">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Farm</th>
+          <th>Type</th>
+          <th>Info</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>4495</td>
+          <td>G</td>
+          <td>4 Mines + Coop</td>
+        </tr>
+        <tr>
+          <td>3610</td>
+          <td>G</td>
+          <td>4 Mines + Coop</td>
+        </tr>
+        <tr>
+          <td>4560</td>
+          <td>G</td>
+          <td>4 Mines + Coop</td>
+        </tr>
+        <tr>
+          <td>2910</td>
+          <td>S</td>
+          <td>4 Mines + Coop</td>
+        </tr>
+        <tr>
+          <td>4725</td>
+          <td>S</td>
+          <td>4 Mines + Coop</td>
+        </tr>
+        <tr>
+          <td>3128</td>
+          <td>S</td>
+          <td>4 Mines + Coop</td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Farm</th>
+          <th>Type</th>
+          <th>Info</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2871</td>
+          <td>G</td>
+          <td>4 Apiary + Coop</td>
+        </tr>
+        <tr>
+          <td>4172</td>
+          <td>W</td>
+          <td>4 Apiary + Coop</td>
+        </tr>
+        <tr>
+          <td>744</td>
+          <td>W</td>
+          <td>4 Apiary + Coop</td>
+        </tr>
+        <tr>
+          <td>4390</td>
+          <td>W</td>
+          <td>4 Apiary + Coop</td>
+        </tr>
+        <tr>
+          <td>2499</td>
+          <td>W</td>
+          <td>4 Apiary</td>
+        </tr>
+        <tr>
+          <td>1308</td>
+          <td>S</S></td>
+          <td>4 Apiary + Coop</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Farm</th>
+          <th>Type</th>
+          <th>Info</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>4299</td>
+          <td>G</td>
+          <td>4 Slimes + Coop</td>
+        </tr>
+        <tr>
+          <td>1933</td>
+          <td>G</td>
+          <td>4 Slimes + Coop</td>
+        </tr>
+        <tr>
+          <td>3110</td>
+          <td>G</td>
+          <td>4 Slimes + Coop</td>
+        </tr>
+        <tr>
+          <td>349</td>
+          <td>G</td>
+          <td>4 Slimes + Coop</td>
+        </tr>
+        <tr>
+          <td>420</td>
+          <td>W</td>
+          <td>4 Slimes + Coop</td>
+        </tr>
+        <tr>
+          <td>2301</td>
+          <td>S</td>
+          <td>4 Slimes + Coop</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Farm</th>
+            <th>Type</th>
+            <th>Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3659</td>
+            <td>W</td>
+            <td>4 Mines + Coop</td>
+          </tr>
+          <tr>
+            <td>2933</td>
+            <td>G</td>
+            <td>4 Workbench + Coop</td>
+          </tr>
+          <tr>
+            <td>2096</td>
+            <td>G</td>
+            <td>4 Kiln + Coop</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="notification"></div>
+  </body>
+</html>
