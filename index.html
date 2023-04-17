@@ -48,7 +48,7 @@
         z-index: 999;
         display: none;
       }
-     .timer {
+.timer {
   font-size: 2em;
   text-align: center;
   margin-top: 20px;
@@ -64,27 +64,32 @@
 .timer span:not(:last-child) {
   margin-right: 5px;
 }
+
+.start-button {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
     </style>
     <script>
 function createTimer(id, duration) {
   const hours = document.getElementById(id).querySelector('.hours');
   const minutes = document.getElementById(id).querySelector('.minutes');
   const seconds = document.getElementById(id).querySelector('.seconds');
-
   let countdown = duration * 60;
 
   function updateTimer() {
     let hoursLeft = Math.floor(countdown / 3600);
     let minutesLeft = Math.floor((countdown - hoursLeft * 3600) / 60);
     let secondsLeft = countdown % 60;
-
     hours.textContent = (hoursLeft < 10) ? `0${hoursLeft}` : hoursLeft;
     minutes.textContent = (minutesLeft < 10) ? `0${minutesLeft}` : minutesLeft;
     seconds.textContent = (secondsLeft < 10) ? `0${secondsLeft}` : secondsLeft;
-
     countdown--;
-
-
     if (countdown < 0) {
       clearInterval(timer);
       hours.textContent = '00';
@@ -93,13 +98,14 @@ function createTimer(id, duration) {
     }
   }
 
-  const timer = setInterval(updateTimer, 1000);
-}
+  function startTimer() {
+    updateTimer();
+    timer = setInterval(updateTimer, 1000);
+  }
 
-// Создаем таймеры
-createTimer('timer1', 90); // 1.5 hours
-createTimer('timer2', 45); // 45 minutes
-createTimer('timer3', 60); // 1 hour
+  const startButton = document.querySelector(`button[data-duration="${duration}"]`);
+  startButton.addEventListener('click', startTimer);
+}
 document.addEventListener("DOMContentLoaded", function() {
   var cells = document.querySelectorAll("td"); // All Table
   
@@ -276,18 +282,21 @@ document.addEventListener("DOMContentLoaded", function() {
           </tr>
         </tbody>
       </table>
-    </div>
-<div class="timer" id="timer1">
+	<div class="timer" id="timer1">
   <span class="hours">01</span>:<span class="minutes">30</span>:<span class="seconds">00</span>
 </div>
+<button class="start-button" data-duration="90">Start</button>
 
 <div class="timer" id="timer2">
   <span class="hours">00</span>:<span class="minutes">45</span>:<span class="seconds">00</span>
 </div>
+<button class="start-button" data-duration="45">Start</button>
 
 <div class="timer" id="timer3">
   <span class="hours">01</span>:<span class="minutes">00</span>:<span class="seconds">00</span>
 </div>
+<button class="start-button" data-duration="60">Start</button>
+    </div>
     <div id="notification"></div>
   </body>
 </html>
