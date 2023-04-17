@@ -47,40 +47,59 @@
         color: white;
         z-index: 999;
         display: none;
-
-.timer-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-}
-
-.timer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  border: 2px solid #333;
-  border-radius: 4px;
-  padding: 10px;
+      }
+     .timer {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .timer span {
-  margin: 0 5px;
+  padding: 0.5em;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
 }
 
-.timer span:before {
-  content: ":";
+.timer span:not(:last-child) {
+  margin-right: 5px;
 }
-
-.timer span:first-child:before {
-  content: "";
-}
-      }
     </style>
     <script>
+function createTimer(id, duration) {
+  const hours = document.getElementById(id).querySelector('.hours');
+  const minutes = document.getElementById(id).querySelector('.minutes');
+  const seconds = document.getElementById(id).querySelector('.seconds');
+
+  let countdown = duration * 60;
+
+  function updateTimer() {
+    let hoursLeft = Math.floor(countdown / 3600);
+    let minutesLeft = Math.floor((countdown - hoursLeft * 3600) / 60);
+    let secondsLeft = countdown % 60;
+
+    hours.textContent = (hoursLeft < 10) ? `0${hoursLeft}` : hoursLeft;
+    minutes.textContent = (minutesLeft < 10) ? `0${minutesLeft}` : minutesLeft;
+    seconds.textContent = (secondsLeft < 10) ? `0${secondsLeft}` : secondsLeft;
+
+    countdown--;
+
+
+    if (countdown < 0) {
+      clearInterval(timer);
+      hours.textContent = '00';
+      minutes.textContent = '00';
+      seconds.textContent = '00';
+    }
+  }
+
+  const timer = setInterval(updateTimer, 1000);
+}
+
+// Создаем таймеры
+createTimer('timer1', 90); // 1.5 hours
+createTimer('timer2', 45); // 45 minutes
+createTimer('timer3', 60); // 1 hour
 document.addEventListener("DOMContentLoaded", function() {
   var cells = document.querySelectorAll("td"); // All Table
   
@@ -258,12 +277,16 @@ document.addEventListener("DOMContentLoaded", function() {
         </tbody>
       </table>
     </div>
-<div class="timer-container">
-  <div class="timer">
-    <span class="hours">00</span>
-    <span class="minutes">00</span>
-    <span class="seconds">00</span>
-  </div>
+<div class="timer" id="timer1">
+  <span class="hours">01</span>:<span class="minutes">30</span>:<span class="seconds">00</span>
+</div>
+
+<div class="timer" id="timer2">
+  <span class="hours">00</span>:<span class="minutes">45</span>:<span class="seconds">00</span>
+</div>
+
+<div class="timer" id="timer3">
+  <span class="hours">01</span>:<span class="minutes">00</span>:<span class="seconds">00</span>
 </div>
     <div id="notification"></div>
   </body>
