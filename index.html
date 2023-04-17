@@ -47,6 +47,37 @@
         color: white;
         z-index: 999;
         display: none;
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  border: 2px solid #333;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.timer span {
+  margin: 0 5px;
+}
+
+.timer span:before {
+  content: ":";
+}
+
+.timer span:first-child:before {
+  content: "";
+}
       }
     </style>
     <script>
@@ -227,6 +258,13 @@ document.addEventListener("DOMContentLoaded", function() {
         </tbody>
       </table>
     </div>
+<div class="timer-container">
+  <div class="timer">
+    <span class="hours">00</span>
+    <span class="minutes">00</span>
+    <span class="seconds">00</span>
+  </div>
+</div>
     <div id="notification"></div>
   </body>
 </html>
