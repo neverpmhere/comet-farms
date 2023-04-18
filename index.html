@@ -94,9 +94,11 @@ function createTimer(id, duration) {
   startButton.addEventListener('click', startTimer);
 }
 
-createTimer('timer1', 90);
-createTimer('timer2', 45);
-createTimer('timer3', 60);
+document.addEventListener("DOMContentLoaded", function(event) { 
+  createTimer('timer1', 90);
+  createTimer('timer2', 45);
+  createTimer('timer3', 60);
+});
 document.addEventListener("DOMContentLoaded", function() {
   var cells = document.querySelectorAll("td"); // All Table
   
